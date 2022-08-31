@@ -10,10 +10,16 @@ import (
 //imports the 'fmt' package, which cointains functions for formatting text. part of the standard library.
 
 func Hello() string {
-	return "Oláaaaaa, enfermeira!!\n"
+	return "\nOláaaaaa, enfermeira!!\n"
+}
+
+func Chihaya() string {
+	chihaya := "\nAyase Chihaya!\n"
+	return chihaya
 }
 
 func main() {
 	fmt.Println(Hello())
 	fmt.Println(quote.Go())
+	fmt.Println(Chihaya())
 } //main function implemented
