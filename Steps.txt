@@ -1,0 +1,16 @@
+'go mod init nomeDoProjetoCreio'
+
+daí tu cria um arquivo.go e escreve o código
+
+package main
+import "fmt"
+func main() {
+	fmt.Println("Olaaaa, enfermeira!")
+}
+
+'go run .'
+
+
+
+aí se tu importar um package externo, tem q fazer 'go mod tidy'
+dps pode 'go run .'
