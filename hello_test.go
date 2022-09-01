@@ -3,11 +3,11 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := Hello()
-	want := "\nOláaaaaa, enfermeira!!\n"
+	got := Hello("Chihaya")
+	want := "Hello, Chihaya"
 
 	if got != want {
-		t.Errorf("got %q want %q", got, want)
+		t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
 	}
 }
 

@@ -9,7 +9,7 @@ import (
 
 //imports the 'fmt' package, which cointains functions for formatting text. part of the standard library.
 
-func Hello() string {
+func Hello(nome string) string {
 	return "\nOláaaaaa, enfermeira!!\n"
 }
 
@@ -19,7 +19,7 @@ func Chihaya() string {
 }
 
 func main() {
-	fmt.Println(Hello())
+	fmt.Println(Hello("Kanade"))
 	fmt.Println(quote.Go())
 	fmt.Println(Chihaya())
 } //main function implemented
