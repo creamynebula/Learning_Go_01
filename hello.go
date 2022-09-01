@@ -8,12 +8,20 @@ import (
 ) //imports the 'fmt' package, which cointains functions for formatting text. part of the standard library.
 
 const prefixHello = "Olá, "
+const prefixHola = "Hola, "
 
-func Hello(name string) string {
+func Hello(name string, language string) string {
+
+	var prefix = prefixHello
+
 	if name == "" {
 		name = "enfermeira"
 	}
-	return prefixHello + name + "!"
+	if language == "Spanish" {
+		prefix = prefixHola
+	}
+
+	return prefix + name + "!"
 }
 
 func Chihaya() string {
@@ -22,7 +30,7 @@ func Chihaya() string {
 }
 
 func main() {
-	fmt.Println(Hello("Oe Kanade-chan"))
+	fmt.Println(Hello("Oe Kanade-chan", ""))
 	fmt.Println(quote.Go())
 	fmt.Println(Chihaya())
 } //main function implemented
