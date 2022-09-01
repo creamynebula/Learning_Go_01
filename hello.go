@@ -5,13 +5,13 @@ import (
 	"fmt"
 
 	"rsc.io/quote"
-)
+) //imports the 'fmt' package, which cointains functions for formatting text. part of the standard library.
 
-//imports the 'fmt' package, which cointains functions for formatting text. part of the standard library.
+const prefixHello = "Olá, "
 
-func Hello(nome string) string {
+func Hello(name string) string {
 	//return "\nOláaaaaa, enfermeira!!\n"
-	return "Olá, " + nome + "!"
+	return prefixHello + name + "!"
 }
 
 func Chihaya() string {
