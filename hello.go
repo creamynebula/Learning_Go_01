@@ -15,7 +15,7 @@ func Hello(name string) string {
 }
 
 func Chihaya() string {
-	chihaya := "\nAyase Chihaya!\n"
+	chihaya := "\nAyase Chihaya!\n" //usually I would be using a constant, obviously.
 	return chihaya
 }
 

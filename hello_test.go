@@ -3,12 +3,25 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := Hello("Chihaya")
-	want := "Olá, Chihaya!"
 
-	if got != want {
-		t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
-	}
+	t.Run("Dizendo oi pros membros do Karuta Club.", func(t *testing.T) {
+		got := Hello("Chihaya")
+		want := "Olá, Chihaya!"
+
+		if got != want {
+			t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
+		}
+	})
+
+	t.Run("Olá, enfermeira! Quando chamarem a função com nome vazio.", func(t *testing.T) {
+		got := Hello("")
+		want := "Olá, enfermeira!"
+
+		if got != want {
+			t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
+		}
+	})
+
 }
 
 func TestChihaya(t *testing.T) {
