@@ -24,3 +24,10 @@ func TestFuncao {
 
 	if got !- want { t.Errorf("Deu ruim. Era pra ser %q, mas deu %q. Vacilo!", got, want) }
 }
+
+-- WORKFLOW --
+- Write a test
+- Make the compiler pass (?)
+- Run the test, see that it fails and check the error message is meaningful
+- Write enough code to make the test pass
+- Refactor

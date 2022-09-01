@@ -17,12 +17,12 @@ func Hello(name string) string {
 }
 
 func Chihaya() string {
-	chihaya := "\nAyase Chihaya!\n" //usually I would be using a constant, obviously.
+	chihaya := "\nsincerely,\n\tAyase Chihaya.\n" //usually I would be using a constant, obviously.
 	return chihaya
 }
 
 func main() {
-	fmt.Println(Hello("Kanade"))
+	fmt.Println(Hello("Oe Kanade-chan"))
 	fmt.Println(quote.Go())
 	fmt.Println(Chihaya())
 } //main function implemented
