@@ -8,20 +8,23 @@ func TestHello(t *testing.T) {
 		got := Hello("Chihaya")
 		want := "Olá, Chihaya!"
 
-		if got != want {
-			t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
-		}
+		assertCorrectMessage(t, got, want)
 	})
 
 	t.Run("Olá, enfermeira! Quando chamarem a função com nome vazio.", func(t *testing.T) {
 		got := Hello("")
 		want := "Olá, enfermeira!"
 
-		if got != want {
-			t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
-		}
+		assertCorrectMessage(t, got, want)
 	})
 
+}
+
+func assertCorrectMessage(t testing.TB, got, want string) {
+	t.Helper()
+	if got != want {
+		t.Errorf("Recebemos %q, mas queríamos %q. Baka!", got, want)
+	}
 }
 
 func TestChihaya(t *testing.T) {

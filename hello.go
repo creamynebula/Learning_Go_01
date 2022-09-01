@@ -10,7 +10,9 @@ import (
 const prefixHello = "Olá, "
 
 func Hello(name string) string {
-	//return "\nOláaaaaa, enfermeira!!\n"
+	if name == "" {
+		name = "enfermeira"
+	}
 	return prefixHello + name + "!"
 }
 
