@@ -10,7 +10,8 @@ import (
 //imports the 'fmt' package, which cointains functions for formatting text. part of the standard library.
 
 func Hello(nome string) string {
-	return "\nOláaaaaa, enfermeira!!\n"
+	//return "\nOláaaaaa, enfermeira!!\n"
+	return "Olá, " + nome + "!"
 }
 
 func Chihaya() string {
