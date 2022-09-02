@@ -9,16 +9,24 @@ import (
 
 const prefixHello = "Olá, "
 const prefixHola = "Hola, "
+const prefixBonjour = "Bonjour, "
+const prefixWeird = "Sua linguagem é doidona, "
 
 func Hello(name string, language string) string {
 
-	var prefix = prefixHello
+	prefix := prefixHello
+
+	switch language {
+	case "Spanish":
+		prefix = prefixHola
+	case "French":
+		prefix = prefixBonjour
+	case "Hungarian", "Romenian", "Bulgarian":
+		prefix = prefixWeird
+	}
 
 	if name == "" {
 		name = "enfermeira"
-	}
-	if language == "Spanish" {
-		prefix = prefixHola
 	}
 
 	return prefix + name + "!"
@@ -31,6 +39,7 @@ func Chihaya() string {
 
 func main() {
 	fmt.Println(Hello("Oe Kanade-chan", ""))
+	fmt.Println(Hello("Adyelya", "Romenian"))
 	fmt.Println(quote.Go())
 	fmt.Println(Chihaya())
 } //main function implemented
