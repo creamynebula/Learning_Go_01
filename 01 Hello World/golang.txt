@@ -17,3 +17,5 @@ switch value {
         dosomethingelse()
 
 }
+
+//Public functions começam nome com uppercase, private functions com lowercase

@@ -1,0 +1,33 @@
+"go mod init nomeDoProjetoCreio"
+
+- daí tu cria um arquivo.go e escreve o código
+
+package main
+import "fmt"
+func main() {
+	fmt.Println("Olaaaa, enfermeira!")
+}
+
+"go run ."
+
+
+
+- aí se tu importar um package externo, tem q fazer "go mod tidy"
+- dps pode "go run ."
+
+- arquivos de teste tem que ser no formato "nomeafuncao_test.go". contém "import "testing""
+- funcoes de teste recebem "t *testing.T" de argumento, e o nome começa com Test.
+
+func TestFuncao {
+	got := Funcao()
+	want := "resultado esperado de Funcao()"
+
+	if got !- want { t.Errorf("Deu ruim. Era pra ser %q, mas deu %q. Vacilo!", got, want) }
+}
+
+-- WORKFLOW --
+- Write a test
+- Make the compiler pass (?)
+- Run the test, see that it fails and check the error message is meaningful
+- Write enough code to make the test pass
+- Refactor
