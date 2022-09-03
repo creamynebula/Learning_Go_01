@@ -14,7 +14,16 @@ const prefixWeird = "Sua linguagem é doidona, "
 
 func Hello(name string, language string) string {
 
-	prefix := prefixHello
+	if name == "" {
+		name = "enfermeira"
+	}
+
+	return greetingPrefix(language) + name + "!"
+}
+
+func greetingPrefix(language string) (prefix string) {
+
+	prefix = prefixHello
 
 	switch language {
 	case "Spanish":
@@ -25,11 +34,7 @@ func Hello(name string, language string) string {
 		prefix = prefixWeird
 	}
 
-	if name == "" {
-		name = "enfermeira"
-	}
-
-	return prefix + name + "!"
+	return //vai retornar 'prefix'! esse feature chama "named return value"
 }
 
 func Chihaya() string {
