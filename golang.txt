@@ -1,0 +1,19 @@
+switch value {
+
+    case v1:
+        dostuff()
+
+    case v2:
+        dootherstuff()
+        fallthrough  //fallthrough faz nao sair do switch, msm se v2 == value
+
+    case v3,v4,v5: //v3 OU v4 OU v5
+        doanotherastuff()
+
+    case v6,v7:
+        break
+
+    default:  //caso nenhum value == vi
+        dosomethingelse()
+
+}
