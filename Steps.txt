@@ -10,8 +10,6 @@ func main() {
 
 "go run ."
 
-
-
 - aí se tu importar um package externo, tem q fazer "go mod tidy"
 - dps pode "go run ."
 
