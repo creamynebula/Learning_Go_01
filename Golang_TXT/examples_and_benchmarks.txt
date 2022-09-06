@@ -1,0 +1,11 @@
+func ExampleRepeat() {
+	example := Repeat("w", 7)
+	fmt.Println(example)
+	//Output: wwwwwww
+}
+
+func BenchmarkRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Repeat("a", 13)
+	}
+}
