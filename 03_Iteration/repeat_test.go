@@ -5,13 +5,14 @@ import (
 	"testing"
 )
 
+const numRepeatings = 7
+
 func TestRepeat(t *testing.T) {
-	numRepeatings := 7
-	repeated := Repeat("a", numRepeatings)
+	got := Repeat("a", numRepeatings)
 	expected := strings.Repeat("a", numRepeatings)
 
-	if repeated != expected {
-		t.Errorf("Vacilão. Era pra retornar %q, mas recebemos %q", expected, repeated)
+	if got != expected {
+		t.Errorf("Vacilão. Era pra retornar %q, mas recebemos %q.", expected, got)
 	}
 }
 

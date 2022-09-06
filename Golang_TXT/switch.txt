@@ -1,0 +1,50 @@
+switch value {
+
+    case v1:
+        dostuff()
+
+    case v2:
+        dootherstuff()
+        fallthrough  //fallthrough faz nao sair do switch, msm se v2 == value
+
+    case v3,v4,v5: //v3 OU v4 OU v5
+        doanotherastuff()
+
+    case v6,v7:
+        break
+
+    default:  //caso nenhum value == vi
+        dosomethingelse()
+
+}
+
+
+// tb podemos switch sem condicao, pra substituir if-else
+
+switch {
+    case booleanExpression: 
+         dostuff()
+    case anotherBool:
+         dootherstuff()
+}
+
+
+
+func main() {
+	words := []string{"hi", "friend", "hello"}
+	for _, word := range words {
+		switch wordLen := len(word); {
+		case wordLen < 3:
+			fmt.Println(word, "is a short word!")
+		case wordLen > 5:
+			fmt.Println(word, "is a long word!")
+		default:
+			fmt.Println(word, "is exactly the right length.")
+		}
+	}
+}
+/* OUTPUT
+hi is a short word!
+friend is a long word!
+hello is exactly the right length.
+*/

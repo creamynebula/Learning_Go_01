@@ -1,0 +1,5 @@
+//Public functions começam nome com uppercase, private functions com lowercase
+
+t.Errorf("Esperávamos %d, mas recebemos %d. GRRRRRRR.", expected, sum) //%d imprime int. %q imprimia string.
+
+//"go test -bench=." ou "go test -bench="." no Powershell"

@@ -1,0 +1,47 @@
+package main
+
+import (
+	"fmt"
+)
+
+// Define different data types
+type square struct {
+	S float64
+}
+
+type circle struct {
+	C float64
+}
+
+type rectangle struct {
+	X float64
+	Y float64
+}
+
+func tellInterface(x interface{}) {
+	// x.(type) will return the type of x element
+	switch v := x.(type) {
+	case square:
+		fmt.Println("This is a square!")
+	case circle:
+		// %v verb used in fmt.Printf() to get the value of the type
+		fmt.Printf("%v is a circle!\n", v)
+	case rectangle:
+		fmt.Println("This is a rectangle!")
+	default:
+		fmt.Printf("Unknown type %T!\n", v)
+	}
+}
+
+func main() {
+	x := circle{C: 10}
+	tellInterface(x)
+
+	y := rectangle{X: 4, Y: 1}
+	tellInterface(y)
+
+	z := square{S: 4}
+	tellInterface(z)
+
+	tellInterface(10)
+}
