@@ -2,6 +2,7 @@ package main //a package is a way to group functions. we declared a package call
 //the package is made up of all the files in the same directory
 
 import (
+	iteration "example/hello/03_Iteration"
 	"fmt"
 
 	"rsc.io/quote"
@@ -47,4 +48,5 @@ func main() {
 	fmt.Println(Hello("Adyelya", "Bulgarian"))
 	fmt.Println(quote.Go())
 	fmt.Println(Chihaya())
+	fmt.Println(iteration.Repeat("oláaaaa, enfermeira! ", 7))
 } //main function implemented
