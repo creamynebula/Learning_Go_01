@@ -1,4 +1,4 @@
-"go mod init nomeDoProjetoCreio"
+"go mod init nomeDoProjetoCreio" //endereço da repo e nao o nome actually, creio
 
 - daí tu cria um arquivo.go e escreve o código
 
@@ -15,6 +15,7 @@ func main() {
 
 - arquivos de teste tem que ser no formato "nomeafuncao_test.go". contém "import "testing"
 - funcoes de teste recebem "t *testing.T" de argumento, e o nome começa com Test.
+- "go test" ou "go test -cover"
 
 func TestFuncao {
 	got := Funcao()
