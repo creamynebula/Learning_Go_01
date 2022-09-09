@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -28,4 +29,10 @@ func TestSumAll(t *testing.T) {
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %v want %v", got, want)
 	}
+}
+
+func ExampleSumAll() {
+	example := SumAll([]int{1, 2}, []int{3, 4})
+	fmt.Println(example)
+	//Output: [3 7]
 }
