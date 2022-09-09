@@ -13,6 +13,17 @@ func Sum(numbers []int) int {
 	return result
 }
 
+func SumAll(numbersToSum ...[]int) []int {
+	numberOfVectors := len(numbersToSum)
+	result := make([]int, numberOfVectors)
+
+	for i, vector := range numbersToSum {
+		result[i] = Sum(vector)
+	}
+
+	return result
+}
+
 func main() {
 	fmt.Println(numbers2)
 }
