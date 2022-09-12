@@ -15,12 +15,12 @@ func Sum(numbers []int) int {
 }
 
 //recebe uma lista de vetores, retorna um vetor contendo as somas dos elementos dos respectivos vetores originais
-//ex: SumAll({1,2}, {3,4}) -> [3 7]
-func SumAll(numbersToSum ...[]int) []int {
-	numberOfVectors := len(numbersToSum)
+//ex: SumAll([]int{1,2}, []int{3,4}) -> [3 7]
+func SumAll(vectorsToSum ...[]int) []int {
+	numberOfVectors := len(vectorsToSum)
 	result := make([]int, numberOfVectors)
 
-	for i, vector := range numbersToSum {
+	for i, vector := range vectorsToSum {
 		result[i] = Sum(vector)
 	}
 
