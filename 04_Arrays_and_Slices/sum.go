@@ -21,11 +21,14 @@ ex: SumAll([]int{1,2}, []int{3,4}) -> [3 7] */
 func SumAll(vectorsToSum ...[]int) []int {
 
 	numberOfVectors := len(vectorsToSum)
-	result := make([]int, numberOfVectors) //aloca um vetor de tamanho 'numberOfVectors'
+	result := make([]int, numberOfVectors) //aloca um slice de tamanho 'numberOfVectors'
 
 	for i, vector := range vectorsToSum {
 		result[i] = Sum(vector)
 	}
+
+	fmt.Println("Tamanho do vetor result:", len(result))
+	fmt.Println("Capacidade do vetor result:", cap(result))
 
 	return result
 }
@@ -49,8 +52,13 @@ func SumAllTails(numbersToSum ...[]int) []int {
 	var sums []int // vai segurar a soma das caudas
 
 	for _, numbers := range numbersToSum { //pra cada vetor "numbers" na coleção
-		tail := numbers[1:]            //tail = novo vetor, cópia a partir do elemento índice 1 de 'numbers'
-		sums = append(sums, Sum(tail)) //coloque em sums a soma da cauda do vetor atual
+
+		if len(numbers) == 0 { //não pode dar vacilo. se o vetor tá vazio,
+			sums = append(sums, 0) //cola um 0 em 'sums'
+		} else {
+			tail := numbers[1:]            //tail = novo vetor, cópia a partir do elemento índice 1 de 'numbers'
+			sums = append(sums, Sum(tail)) //coloque em sums a soma da cauda do vetor atual
+		}
 	}
 
 	return sums
