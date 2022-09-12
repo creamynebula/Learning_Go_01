@@ -1,0 +1,12 @@
+var meuVetor = []int{1,2,3,4,28}
+var resultado int;
+
+func algumaFuncao (args int) int {
+    do stuff
+    return someInt
+}
+
+for i, elemento := range meuVetor {
+    resultado += algumaFuncao(elemento)
+}
+
