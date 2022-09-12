@@ -36,3 +36,22 @@ func ExampleSumAll() {
 	fmt.Println(example)
 	//Output: [3 7]
 }
+
+func TestSumAll2(t *testing.T) {
+
+	got := SumAll2([]int{1, 2}, []int{0, 9})
+	want := []int{3, 9}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+func TestSumAllTails(t *testing.T) {
+	got := SumAllTails([]int{1, 2}, []int{0, 9})
+	want := []int{2, 9}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
