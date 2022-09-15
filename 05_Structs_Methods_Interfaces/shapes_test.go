@@ -34,10 +34,11 @@ func TestArea(t *testing.T) {
 	}
 
 	for _, tt := range areaTests { //iterar sober areaTests
-		got := tt.shape.Area() // got == área do shape que tá ali colocado de exemplo
-		if got != tt.hasArea { // se nao for igual a área real do shape, calculada na mão
-			t.Errorf("got %g want %g", got, tt.hasArea)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			got := tt.shape.Area() // got == área do shape que tá ali colocado de exemplo
+			if got != tt.hasArea { // se nao for igual a área real do shape, calculada na mão
+				t.Errorf("got %g want %g", got, tt.hasArea)
+			}
+		})
 	}
-
 }

@@ -1,0 +1,28 @@
+t.Errorf("Esperávamos %d, mas recebemos %d. GRRRRRRR.", expected, sum) //%d imprime int. %q imprimia string.
+
+BENCHMARKING: "go test -bench=." ou "go test -bench="." no Powershell"
+
+/*
+func TestSomething(t *testing.T) {
+
+	myTests := []struct {
+		testName string
+		atrb2 CustomType
+		atrb3 float64
+	}{
+		{"BlaBla", {CustomType's data}, 64.0},
+		{"Chihaya", {CustomType's data}, 13.0},
+	}
+
+	for _, test := range myTests {
+		t.Run(test.testName, func() {
+			got := test.atrb2.certainMethod()
+			want := test.atrb3
+			if got != want {
+				t.Errorf("recebemos %g, queriamos %g", got, test.atrb3)
+			}
+
+		})
+	}
+}
+*/
