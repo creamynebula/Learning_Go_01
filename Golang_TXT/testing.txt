@@ -8,21 +8,23 @@ func TestSomething(t *testing.T) {
 	myTests := []struct {
 		testName string
 		atrb2 CustomType
-		atrb3 float64
+		atrb3 float64  // isso pode ser uma area, e CustomType tem um método pra calcular área, que vamos testar
 	}{
-		{"BlaBla", {CustomType's data}, 64.0},
-		{"Chihaya", {CustomType's data}, 13.0},
+		{"BlaBla", CustomType{data}, 64.0},
+		{"Chihaya", CustomType{data}, 13.0},
 	}
 
 	for _, test := range myTests {
-		t.Run(test.testName, func() {
-			got := test.atrb2.certainMethod()
+		t.Run(test.testName, func(t *testing.T) {
+			got := test.atrb2.Area()
 			want := test.atrb3
 			if got != want {
-				t.Errorf("recebemos %g, queriamos %g", got, test.atrb3)
+				t.Errorf("recebemos %g, queriamos %g", got, want)
 			}
 
 		})
 	}
 }
+
+// aí vc pode "go test -run TestSomething/BlaBla" ou "go test -run TestSomething/Chihaya"
 */
