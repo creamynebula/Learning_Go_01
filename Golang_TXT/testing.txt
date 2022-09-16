@@ -1,4 +1,5 @@
 t.Errorf("Esperávamos %d, mas recebemos %d. GRRRRRRR.", expected, sum) //%d imprime int. %q imprimia string.
+t.Helper() // marca a função aonde o Helper foi chamada como pertencente a um teste.
 
 BENCHMARKING: "go test -bench=." ou "go test -bench="." no Powershell"
 
@@ -28,3 +29,21 @@ func TestSomething(t *testing.T) {
 
 // aí vc pode "go test -run TestSomething/BlaBla" ou "go test -run TestSomething/Chihaya"
 */
+
+func TestSomething2(t *testing.T) {
+
+	t.Run("testName1", func(t *testing.T) {
+		got :=
+		want :=
+		if got != want {
+			t.Errorf("olaaaa enfermeira! queriamos %,g recebemos %g.", got, want)
+		}
+	})
+	t.Run("testName2", func(t *testing.T) {
+		got :=
+		want :=
+		if got != want {
+			t.Errorf("olaaaa enfermeira! queriamos %,g recebemos %g.", got, want)
+		}
+	})
+}

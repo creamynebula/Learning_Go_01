@@ -13,11 +13,11 @@ func (rectangle Rectangle) Area() float64 { // metodo
 	return (rectangle.Width * rectangle.Height)
 }
 
-type Circle struct {
+type Circle struct { // círculos tem um raio
 	Radius float64
 }
 
-func (circle Circle) Area() float64 {
+func (circle Circle) Area() float64 { // e área pi.r^2
 	return (circle.Radius * circle.Radius * math.Pi)
 }
 
@@ -32,7 +32,8 @@ func (triangle Triangle) Area() float64 {
 
 type Shape interface {
 	Area() float64
-} //isso quer dizer que Shape é um struct que possui um método Area() que retorna float64
+} // isso quer dizer que Shape se refere a algum struct que possui um método Area(),
+// que retorna um float64
 
 func Perimeter(rectangle Rectangle) float64 {
 	return 2 * (rectangle.Width + rectangle.Height)
