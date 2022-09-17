@@ -18,7 +18,7 @@ func TestPerimeter(t *testing.T) {
 /* table driven tests que chama isso */
 func TestArea(t *testing.T) {
 
-	areaTests := []struct { // areaTests é um slice de
+	areaTests := []struct { // areaTests é um slice de structs. esse tipo de declaração é um "anonymous struct"
 		// primeiro definimos a estrutura desses structs
 		name    string  // o nome é pra gente usar no nome de cada teste, pra depois os testes serem mais legíveis
 		shape   Shape   // a estrutura contém um shape
@@ -36,7 +36,7 @@ func TestArea(t *testing.T) {
 
 	for _, tt := range areaTests { // iterar sober areaTests
 		t.Run(tt.name, func(t *testing.T) {
-			got := tt.shape.Area() // got == área do shape que tá ali colocado de exemplo
+			got := tt.shape.Area() // got == área dos shapes
 			if got != tt.hasArea { // se nao for igual a área real do shape, calculada na mão
 				t.Errorf("got %g want %g", got, tt.hasArea)
 			}

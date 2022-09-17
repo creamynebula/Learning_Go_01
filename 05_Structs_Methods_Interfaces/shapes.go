@@ -32,7 +32,7 @@ func (triangle Triangle) Area() float64 {
 
 type Shape interface {
 	Area() float64
-} // isso quer dizer que Shape se refere a algum struct que possui um método Area(),
+} // isso quer dizer que Shape é algum type que possui um método Area(),
 // que retorna um float64
 
 func Perimeter(rectangle Rectangle) float64 {
