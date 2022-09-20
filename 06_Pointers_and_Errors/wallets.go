@@ -16,8 +16,9 @@ func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+func (w *Wallet) Withdraw(amount Bitcoin) error {
 	w.balance -= amount
+	return nil
 }
 
 type Stringer interface { // isso quer dizer que Stringer é algum type que possui um método String(), acho

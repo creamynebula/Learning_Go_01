@@ -34,7 +34,7 @@ func TestWallet(t *testing.T) {
 
 		assertBalance(t, wallet, startingBalance)
 
-		if err == nil {
+		if err == nil { // aí falhar o teste se err == nil
 			t.Error("wanted an error but didn't get one")
 		}
 	})
