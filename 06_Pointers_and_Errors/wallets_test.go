@@ -13,6 +13,13 @@ func TestWallet(t *testing.T) {
 		}
 	}
 
+	assertError := func(t testing.TB, err error) {
+		t.Helper()
+		if err == nil {
+			t.Error("wanted an error but didn't get one")
+		}
+	}
+
 	t.Run("deposit", func(t *testing.T) {
 		wallet := Wallet{}
 		wallet.Deposit(Bitcoin(10))
@@ -32,11 +39,9 @@ func TestWallet(t *testing.T) {
 		// porque espera-se que withdraw não permita tirar BTC que não existe
 		// e o saldo se mantenha o mesmo
 
+		assertError(t, err)
 		assertBalance(t, wallet, startingBalance)
 
-		if err == nil { // aí falhar o teste se err == nil
-			t.Error("wanted an error but didn't get one")
-		}
 	})
 
 }
