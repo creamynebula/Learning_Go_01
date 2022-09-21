@@ -18,6 +18,11 @@ func (w *Wallet) Deposit(amount Bitcoin) { // recebe um pointer pra wallet 'w'
 }
 
 func (w *Wallet) Balance() Bitcoin {
+
+	if w == nil {
+		return Bitcoin(0)
+	}
+
 	return w.balance
 }
 
