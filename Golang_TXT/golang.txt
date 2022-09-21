@@ -1,1 +1,6 @@
 // Public functions começam nome com uppercase, private functions com lowercase
+
+/*
+"go install github.com/kisielk/errcheck@latest"
+Then, inside the directory with your code run "errcheck ."
+*/
