@@ -1,0 +1,4 @@
+// d == dicionário
+definition, ok := d[word]
+
+// d[word] retorna o valor associado à chave, se houver, e opcionalmente retorna um segundo valor, true se o lookup deu certo, false otherwise
