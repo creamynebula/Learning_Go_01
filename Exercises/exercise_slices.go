@@ -1,8 +1,11 @@
 package main
 
+/*
 import (
 	"golang.org/x/tour/pic"
 )
+na versão web do tour isso funciona, aqui nao, entao vou comentar isso e o main pra nao receber o warning
+*/
 
 func Pic(dx, dy int) [][]uint8 {
 
@@ -20,5 +23,5 @@ func Pic(dx, dy int) [][]uint8 {
 }
 
 func main() {
-	pic.Show(Pic)
+	//pic.Show(Pic)
 }
