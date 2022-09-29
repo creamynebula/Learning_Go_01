@@ -1,0 +1,11 @@
+//  interface é um tipo que implementa um certo método. exemplos:
+
+
+type Writer interface { // Writer implementa Write(p []byte)
+	Write(p []byte) (n int, err error)
+}
+
+
+type Shape interface { // Shape implementa Area()
+	Area() float64
+}
