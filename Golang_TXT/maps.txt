@@ -1,8 +1,4 @@
-// d == dicionário
-definition, ok := d[word]
-
-// d[word] retorna o valor associado à chave, se houver, e opcionalmente retorna um segundo valor, true se o lookup deu certo, false otherwise
-
+https://go.dev/blog/maps
 
 var m map[string]int  
 // map string->int, m == nil. Não pode escrever nele ainda, senão dá erro!
@@ -59,8 +55,10 @@ karutaClub := map[string]int{
 
 
 
+
 // Percorre uma lista de Nodes e imprime os valores.
 // Para se um ciclo for detectado na lista.
+
     type Node struct {
         Next  *Node
         Value interface{}
@@ -75,4 +73,27 @@ karutaClub := map[string]int{
         }
         visited[n] = true
         fmt.Println(n.Value)
+    }
+
+
+
+
+// Percorre um slice contendo pointers para Person.
+// Aí, pra cada pessoa, concatena no map 'likes' ('nome' -> *pessoa)
+// as pessoas que gostam dela. Então em cada pessoa, temos Likes []string
+// que é um slice com os nomes das pessoas de quem a pessoa gosta.
+// e no map 'likes', temos um map entre o nome de cada pessoa
+// e as que gostam dela. O inverso.
+
+    type Person struct {
+        Name  string
+        Likes []string
+    }
+    var people []*Person
+
+    likes := make(map[string][]*Person)
+    for _, p := range people {
+        for _, l := range p.Likes {
+            likes[l] = append(likes[l], p)
+        }
     }
