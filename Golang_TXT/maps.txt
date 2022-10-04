@@ -118,6 +118,32 @@ add(hits, "/doc/", "au")   // adiciona um hit da austrália no path '/doc/'
 n := hits["/doc/"]["au"]   // 'n' contém o número de hits da austrália em 'doc'
 
 
+// ainda melhor teria sido implementar dessa forma:
+
+type Key struct {
+    Path, Country string
+}
+
+hits := make(map[Key]int)   // aloca o map (Key->int)
+hits[Key{"/", "vn"}]++   // Incrementa o hit. Se a Key não existir, já cria ela e incrementa normalmente!
+n := hits[Key{"/ref/spec", "ch"}]   // número de hits da suíça em /ref/spec
 
 
-a
+
+
+// declara um struct anônimo com um map (string->int), e um Mutex,
+// pra garantir segurança no caso de concurrency.
+
+var counter = struct{
+    sync.RWMutex   // counter.Lock() e counter.Unlock() pra poder ler/escrever e pra trancar dnv
+    m map[string]int
+}{m: make(map[string]int)}   // já inicia o counter
+
+counter.RLock()   // agora podemos ler, enquanto seguramos a chave
+n := counter.m["some_key"]
+counter.RUnlock()   // soltamos a chave
+fmt.Println("some_key:", n)
+
+counter.Lock()   // agora podemos escrever, enquanto seguramos a chave
+counter.m["some_key"]++
+counter.Unlock()

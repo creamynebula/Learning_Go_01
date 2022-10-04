@@ -1,0 +1,7 @@
+Arrays não são pointers, são valores. Uma variável array denota todo o conteúdo do array, então qdo vc passa ou designa um array pra uma variável, vc tá copiando os valores. Vc pode passar um pointer pro array se quiser modificar um array com uma função.
+Arrays declarados são automaticamente iniciados com o 'zero value' do tipo do array.
+
+var a [4] int
+b := [2]string{"Penn", "Teller"}
+ou
+b := [...]string{"Penn", "Teller"}
