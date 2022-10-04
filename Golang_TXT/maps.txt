@@ -5,12 +5,16 @@ definition, ok := d[word]
 
 
 var m map[string]int  
-// map string->int, m == nil. Não pode escrever nele ainda!
+// map string->int, m == nil. Não pode escrever nele ainda, senão dá erro!
 
 
 m = make(map[string]int)
 // m agora pointer pra hash table (string->int)
+// por default, m['whatever'] == 0
 
+
+// esse aqui embaixo vai ser equivalente a esse uso do make em cima
+m = map[string]int{}
 
 m["route"] = 66  // "route" -> 66
 m["towel"] = 42
@@ -39,3 +43,36 @@ i, ok := m["route"]
 // se a key não existe, i == type's zero value
 // ok == true se a key existe, false otherwise.
 
+
+for key, value := range m {
+    fmt.Println("Key: ", key, "Value: ", value)
+}
+
+
+karutaClub := map[string]int{
+    "chihaya": 0,
+    "taichi": 1,
+    "kana": 2,
+    "desktomu": 3,
+    "nishida": 4,
+}
+
+
+
+// Percorre uma lista de Nodes e imprime os valores.
+// Para se um ciclo for detectado na lista.
+    type Node struct {
+        Next  *Node
+        Value interface{}
+    }
+    var first *Node
+
+    visited := make(map[*Node]bool)
+    for n := first; n != nil; n = n.Next {
+        if visited[n] {
+            fmt.Println("cycle detected")
+            break
+        }
+        visited[n] = true
+        fmt.Println(n.Value)
+    }
