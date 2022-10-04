@@ -2,3 +2,40 @@
 definition, ok := d[word]
 
 // d[word] retorna o valor associado à chave, se houver, e opcionalmente retorna um segundo valor, true se o lookup deu certo, false otherwise
+
+
+var m map[string]int  
+// map string->int, m == nil. Não pode escrever nele ainda!
+
+
+m = make(map[string]int)
+// m agora pointer pra hash table (string->int)
+
+
+m["route"] = 66  // "route" -> 66
+m["towel"] = 42
+
+
+i := m["route"]
+// declarada 'i', iniciada com valor 66
+
+
+j := m["root"]
+// j == 0.
+// Por default, tentar acessar key não declarada retorna o 'zero value' do tipo, que pra int é 0
+
+
+n := len(m)
+// len(m) retorna o número de keys declaradas no map
+
+
+delete(m, "route")
+// delete (mapVar, "key") deleta "key" do map.
+// A função não retorna nada, e não fará nada se a key não existir.
+
+
+i, ok := m["route"]
+// 'i' recebe o valor guardado pela key 'route'
+// se a key não existe, i == type's zero value
+// ok == true se a key existe, false otherwise.
+
