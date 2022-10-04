@@ -97,3 +97,27 @@ karutaClub := map[string]int{
             likes[l] = append(likes[l], p)
         }
     }
+
+
+
+
+// 'm' é um map 'path' -> map('country' -> numHits int)
+// add() adiciona um hit de 'country' em 'path'
+
+func add(m map[string]map[string]int, path, country string) {
+    mm, ok := m[path]
+    if !ok {   // se a url ainda não existe
+        mm = make(map[string]int)   // aloca um mapa vazio
+        m[path] = mm   // coloca ele na chave correspondente
+    }
+    mm[country]++   // incrementa o numero de hits
+}
+
+hits := make(map[string]map[string]int)
+add(hits, "/doc/", "au")   // adiciona um hit da austrália no path '/doc/'
+n := hits["/doc/"]["au"]   // 'n' contém o número de hits da austrália em 'doc'
+
+
+
+
+a
