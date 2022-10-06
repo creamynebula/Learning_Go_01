@@ -1,6 +1,10 @@
-// Public functions começam nome com uppercase, private functions com lowercase
+https://go.dev/doc/effective_go.html
+https://go.dev/blog/all
+https://gobyexample.com/
 
-/*
+
+Public functions começam nome com uppercase, private functions com lowercase
+
+
 "go install github.com/kisielk/errcheck@latest"
 Then, inside the directory with your code run "errcheck ."
-*/
