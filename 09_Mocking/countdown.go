@@ -40,6 +40,23 @@ func (s *SpyCountdownOperations) Write(p []byte) (n int, err error) {
 	return
 }
 
+type ConfigurableSleeper struct {
+	duration time.Duration
+	sleep    func(time.Duration)
+}
+
+func (c *ConfigurableSleeper) Sleep() {
+	c.sleep(c.duration)
+}
+
+type SpyTime struct {
+	durationSlept time.Duration
+}
+
+func (s *SpyTime) Sleep(duration time.Duration) {
+	s.durationSlept = duration
+}
+
 // se chamar Countdown(os.Stdout, sleeper), vai escrever pra std output
 // se chamar Countdown(&spyCountdownOperations, &spyCountdownOperations)
 // os Fprint vao escrever usando o método Write() do spy!
@@ -54,6 +71,6 @@ func Countdown(out io.Writer, sleeper Sleeper) {
 }
 
 func main() {
-	sleeper := &DefaultSleeper{}  // passando esse sleeper, essa estrutura vai ser modificada
-	Countdown(os.Stdout, sleeper) // vai escrever no std output mesmo, no terminal.
+	sleeper := &ConfigurableSleeper{1 * time.Second, time.Sleep} // passando esse sleeper, essa estrutura vai ser modificada
+	Countdown(os.Stdout, sleeper)                                // vai escrever no std output mesmo, no terminal.
 }
