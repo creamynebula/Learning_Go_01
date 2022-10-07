@@ -9,7 +9,7 @@ import (
 func TestCountdown(t *testing.T) {
 
 	t.Run("prints 3 to Go!", func(t *testing.T) {
-		buffer := &bytes.Buffer{}
+		buffer := &bytes.Buffer{} // buffer de bytes (slice que podemos ler e escrever)
 		Countdown(buffer, &SpyCountdownOperations{})
 
 		got := buffer.String()

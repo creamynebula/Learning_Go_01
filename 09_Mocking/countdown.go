@@ -16,19 +16,9 @@ type Sleeper interface {
 	Sleep()
 }
 
-/*
-type SpySleeper struct {
-	Calls int
-}
-
-func (s *SpySleeper) Sleep() { // então, SpySleeper é um Sleep
-	s.Calls++
-}
-*/
-
 type DefaultSleeper struct{}
 
-func (d *DefaultSleeper) Sleep() { // defaultSleeper é um Sleep
+func (d *DefaultSleeper) Sleep() { // defaultSleeper é um Sleeper
 	time.Sleep(1 * time.Second) // e o sleep dele são as pausas de 1s
 }
 
@@ -36,17 +26,23 @@ type SpyCountdownOperations struct {
 	Calls []string // ["write", "sleep", "write", "sleep"...]
 }
 
-// Sleeper! No teste a gente chama esse, pq não tem os intervalos de 1s
+// Sleeper! No teste a gente chama esse, que não dorme os intervalos de 1s
+// ele só escreve "sleep" no log Calls []string
 func (s *SpyCountdownOperations) Sleep() {
 	s.Calls = append(s.Calls, sleep)
 }
 
-// escreve "write" no slice de calls ao spy
+// escreve "write" no *SpyCountdownOperations.Calls []string
+// acho que implementar interface Write() tb garante que podemos
+// usar &spyCountdownOperations{} como um io.Writer
 func (s *SpyCountdownOperations) Write(p []byte) (n int, err error) {
 	s.Calls = append(s.Calls, write)
 	return
 }
 
+// se chamar Countdown(os.Stdout, sleeper), vai escrever pra std output
+// se chamar Countdown(&spyCountdownOperations, &spyCountdownOperations)
+// os Fprint vao escrever usando o método Write() do spy!
 func Countdown(out io.Writer, sleeper Sleeper) {
 	for i := countdownStart; i > 0; i-- {
 		fmt.Fprintln(out, i)
@@ -57,6 +53,6 @@ func Countdown(out io.Writer, sleeper Sleeper) {
 }
 
 func main() {
-	sleeper := &DefaultSleeper{}
+	sleeper := &DefaultSleeper{} // passando esse sleeper, essa estrutura vai ser modificada
 	Countdown(os.Stdout, sleeper)
 }
