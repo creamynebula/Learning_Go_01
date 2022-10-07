@@ -43,6 +43,7 @@ func (s *SpyCountdownOperations) Write(p []byte) (n int, err error) {
 // se chamar Countdown(os.Stdout, sleeper), vai escrever pra std output
 // se chamar Countdown(&spyCountdownOperations, &spyCountdownOperations)
 // os Fprint vao escrever usando o método Write() do spy!
+// ou seja, só vão escrever "write" nas chamadas pra Fprint.
 func Countdown(out io.Writer, sleeper Sleeper) {
 	for i := countdownStart; i > 0; i-- {
 		fmt.Fprintln(out, i)
@@ -53,6 +54,6 @@ func Countdown(out io.Writer, sleeper Sleeper) {
 }
 
 func main() {
-	sleeper := &DefaultSleeper{} // passando esse sleeper, essa estrutura vai ser modificada
-	Countdown(os.Stdout, sleeper)
+	sleeper := &DefaultSleeper{}  // passando esse sleeper, essa estrutura vai ser modificada
+	Countdown(os.Stdout, sleeper) // vai escrever no std output mesmo, no terminal.
 }
