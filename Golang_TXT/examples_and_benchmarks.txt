@@ -1,3 +1,4 @@
+
 func ExampleRepeat() {
 	example := Repeat("w", 7)
 	fmt.Println(example)
@@ -5,6 +6,9 @@ func ExampleRepeat() {
 }
 
 /* BENCHMARKS
+
+// go test -bench=.
+
 
 func BenchmarkXxx(*testing.B)
 

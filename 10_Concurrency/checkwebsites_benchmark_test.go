@@ -11,11 +11,14 @@ func slowStubWebsiteChecker(_ string) bool {
 }
 
 func BenchmarkCheckWebsites(b *testing.B) {
+
 	urls := make([]string, 100)
 	for i := 0; i < len(urls); i++ {
 		urls[i] = "a url"
 	}
-	b.ResetTimer()
+
+	b.ResetTimer() // pra zerar o timer antes da parte realmente importante do teste, a que queremos medir
+
 	for i := 0; i < b.N; i++ {
 		CheckWebsites(slowStubWebsiteChecker, urls)
 	}
