@@ -15,6 +15,8 @@ func main() {
 
 
 
+// por default, tanto sends qto receives blockam até que
+// ambos os lados estejam "prontos"
 package main
 
 import (
@@ -31,6 +33,94 @@ func main() {
 		messages2 <- "deehoo"
 	}()
 
-	msg := (<-messages1) + " " + (<-messages2) // block until messages channels are ready and sent the info
+	msg := (<-messages1) + " " + (<-messages2) // will block until channels are ready and sent the info
 	fmt.Println(msg)
+}
+
+
+
+
+// Denovo, lembra que sends e receives blockam por default,
+// até que ambos os lados estejam prontos
+func worker(done chan bool) {
+	fmt.Print("working...")
+	time.Sleep(2 * time.Second)
+	fmt.Println("done!")
+
+	done <- true
+}
+
+func main() {
+
+	done := make(chan bool, 1)
+	go worker(done)
+
+        // só executa qdo a goroutine aqui em cima, q depende de 'done', tiver terminado de trabalhar!
+	<-done 
+	// sem esse detalhezinho o programa encerra sem nem imprimir nada
+	// ele nao se importa de encerrar enquanto a goroutine ainda trabalha
+}
+
+
+
+
+// Channel directions: dá pra obrigar os channels em uma func
+// a apenas enviarem, ou apenas receberem. Type safety!
+
+func ping(pings chan<- string, msg string) {
+    // pings é necessariamente um channel que recebe
+    pings <- msg
+}
+
+func pong(pings <-chan string, pongs chan<- string) {
+    // pings é um channel que transmite aqui
+    // e pongs um que recebe
+    msg := <-pings
+    pongs <- msg
+}
+
+func main() {
+    pings := make(chan string, 1)
+    pongs := make(chan string, 1)
+    ping(pings, "passed message")
+    pong(pings, pongs)
+    fmt.Println(<-pongs)
+}
+
+
+
+
+// Combinar goroutines, channels e select permite
+// esperar por várias operações concorrentes
+
+func main() {
+
+	c1 := make(chan string)
+	c2 := make(chan string)
+
+	go func() {
+		// dorme mto
+		time.Sleep(3 * time.Second)
+		c1 <- "c1"
+	}()
+	go func() {
+		// dorme pouco
+		time.Sleep(1 * time.Second)
+		c2 <- "c2"
+	}()
+
+	for i := 0; i < 2; i++ {
+
+		select {
+		// cada caso só vai executar qdo o respectv. channel tiver pronto
+		// e eles dependem o 1o de uma goroutine que dorme mto
+		// e o 2o de uma goroutine que dorme pouco
+		// c2 acaba imprimindo antes!
+		case msg1 := <-c1:
+			fmt.Println("received", msg1)
+		case msg2 := <-c2:
+			fmt.Println("received", msg2)
+
+		} // fim select
+	} // fim for
 }
