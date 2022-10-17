@@ -117,6 +117,8 @@ func main() {
 		// e eles dependem o 1o de uma goroutine que dorme mto
 		// e o 2o de uma goroutine que dorme pouco
 		// c2 acaba imprimindo antes!
+		// mas cada case é executado de forma concorrente
+		// então o programa leva ~2s mesmo
 		case msg1 := <-c1:
 			fmt.Println("received", msg1)
 		case msg2 := <-c2:
