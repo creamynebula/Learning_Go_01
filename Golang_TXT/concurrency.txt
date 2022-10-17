@@ -59,6 +59,7 @@ func main() {
 	<-done 
 	// sem esse detalhezinho o programa encerra sem nem imprimir nada
 	// ele nao se importa de encerrar enquanto a goroutine ainda trabalha
+	// ele encerra qdo a rotina do 'main' termina, creio
 }
 
 
