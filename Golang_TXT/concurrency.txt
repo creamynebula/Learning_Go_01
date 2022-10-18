@@ -1,3 +1,8 @@
+ALWAYS MAKE CHANNELS. Notice how we have to use make when creating a channel; rather than say var ch chan struct{}. When you use var, the variable will be initialised with the "zero" value of the type. So, for string, it is "", int it is 0, etc.
+For channels the zero value is nil, and if you try and send to it with <- , it will block forever, because you cannot send to nil channels.
+
+
+
 var wg = sync.WaitGroup
 
 func main() {
@@ -43,23 +48,24 @@ func main() {
 // Denovo, lembra que sends e receives blockam por default,
 // até que ambos os lados estejam prontos
 func worker(done chan bool) {
-	fmt.Print("working...")
-	time.Sleep(2 * time.Second)
-	fmt.Println("done!")
+    fmt.Print("working...")
+    time.Sleep(2 * time.Second)
+    fmt.Println("done!")
 
-	done <- true
+    done <- true
 }
 
 func main() {
 
-	done := make(chan bool, 1)
-	go worker(done)
+    done := make(chan bool, 1)
+    go worker(done)
 
-        // só executa qdo a goroutine aqui em cima, q depende de 'done', tiver terminado de trabalhar!
-	<-done 
-	// sem esse detalhezinho o programa encerra sem nem imprimir nada
-	// ele nao se importa de encerrar enquanto a goroutine ainda trabalha
-	// ele encerra qdo a rotina do 'main' termina, creio
+    // só executa qdo a goroutine aqui em cima, q depende de 'done',
+    // tiver terminado de trabalhar!
+    <-done 
+    // sem esse detalhezinho o programa encerra sem nem imprimir nada
+    // ele nao se importa de encerrar enquanto a goroutine ainda trabalha
+    // ele encerra qdo a rotina do 'main' termina, creio
 }
 
 
@@ -114,8 +120,8 @@ func main() {
 
 		select {
 		// cada caso só vai executar qdo o respectv. channel tiver pronto
-		// e eles dependem o 1o de uma goroutine que dorme mto
-		// e o 2o de uma goroutine que dorme pouco
+		// e eles dependem o 1o de uma goroutine que dorme mto,
+		// e o 2o de uma goroutine que dorme pouco.
 		// c2 acaba imprimindo antes!
 		// mas cada case é executado de forma concorrente
 		// então o programa leva ~2s mesmo
