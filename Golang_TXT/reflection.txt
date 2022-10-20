@@ -1,10 +1,52 @@
 https://blog.golang.org/laws-of-reflection
 
+Here again are the laws of reflection:
+
+    Reflection goes from interface value to reflection object.
+
+    Reflection goes from reflection object to interface value.
+
+    To modify a reflection object, the value must be settable.
+
+
 var x float64 = 3.4
-fmt.Println("type: ", reflect.TypeOf(x))
-fmt.Println("value: ", reflect.ValueOf(x))
+fmt.Println("type of x: ", reflect.TypeOf(x))
+fmt.Println("value of x: ", reflect.ValueOf(x))
 
 v := reflect.ValueOf(x)
-fmt.Println("type: ", v.Type())
-fmt.Println("kind is float64: ", v.Kind() == reflect.Float64)
-fmt.Println("value: ", v.Float())
+fmt.Println("type of v: ", v.Type())
+fmt.Println("kind is float64? ", v.Kind() == reflect.Float64)
+fmt.Println("value of v: ", v.Float())
+
+var x2 float64 = 3.4
+v2 := reflect.ValueOf(x2)
+fmt.Println("settability of v2:", v2.CanSet())  // false
+
+var x3 float64 = 3.4
+p := reflect.ValueOf(&x3)
+fmt.Println("type of p:", p.Type())
+fmt.Println("settability of p:", p.CanSet())  // ainda false, mas...
+
+v3 := p.Elem()  // 'Elem' method of 'Value', indirects through the pointer
+fmt.Println("settability of v3:", v3.CanSet())  // true
+
+v3.SetFloat(7.1)
+fmt.Println(v3.Interface())
+fmt.Println(x3)
+
+
+
+
+type T struct {
+    A int
+    B string
+}
+t := T{23, "skidoo"}
+s := reflect.ValueOf(&t).Elem()
+typeOfT := s.Type()
+for i := 0; i < s.NumField(); i++ {
+    f := s.Field(i)
+    fmt.Printf("%d: %s %s = %v\n", i,
+        typeOfT.Field(i).Name, f.Type(), f.Interface())
+}
+
