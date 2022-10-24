@@ -1,5 +1,3 @@
-package main
-
 import "sync"
 
 type Counter struct {
@@ -17,8 +15,4 @@ func (c *Counter) Inc() {
 
 func (c *Counter) Value() int {
 	return c.value
-}
-
-func main() {
-
 }
