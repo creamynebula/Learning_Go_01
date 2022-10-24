@@ -2,6 +2,9 @@ ALWAYS MAKE CHANNELS. Notice how we have to use make when creating a channel; ra
 For channels the zero value is nil, and if you try and send to it with <- , it will block forever, because you cannot send to nil channels.
 
 
+Use channels when passing ownership of data. Use mutexes for managing state.
+
+
 
 var wg = sync.WaitGroup
 
