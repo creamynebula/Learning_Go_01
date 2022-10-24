@@ -19,17 +19,19 @@ func TestCounter(t *testing.T) {
 		wantedCount := 1000
 		counter := Counter{}
 
-		var wg sync.WaitGroup
-		wg.Add(wantedCount)
+		var wg sync.WaitGroup // um WaitGroup espera por uma coleçao de goroutines terminar
+		wg.Add(wantedCount)   // número de goroutines pelas quais teremos de esperar
+		// é bom Add() antes de chamar as goroutines
 
 		for i := 0; i < wantedCount; i++ {
-			go func() {
-				counter.Inc()
-				wg.Done()
+			go func() { // nova goroutine
+				counter.Inc() // incremente o counter
+				wg.Done()     // chamar 'done' qdo terminar, me parece que isso é tipo wg.Add(-1)
 			}()
 		}
 
-		wg.Wait()
+		wg.Wait() // espera todas as goroutines terminarem
+		// ou seja, blocka até o counter interno do WaitGroup == 0
 
 		assertCounter(t, counter, wantedCount)
 	})
