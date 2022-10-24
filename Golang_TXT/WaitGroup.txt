@@ -1,0 +1,15 @@
+// um WaitGroup espera por uma coleção de goroutines terminar
+var wg sync.Waitgroup
+// essa vai esperar por 1000 operacoes
+wg.Add(1000)  // counter interno == 1000
+
+for i := 0; i < 1000; i++ {
+    go func () {
+        doStuff()
+        wg.Done()  // decrementa o counter interno
+        // qdo counter interno for 0, deu bom
+    }()
+}
+
+wg.Wait()  // espera todas as goroutines terminarem
+// ou seja, blocka até counter interno do WaitGroup == 0
