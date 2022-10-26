@@ -32,12 +32,21 @@ import (
 )
 
 func main() {
+	// imprime sincronizado, de uma vez
+	// ou seja, nao tem problema os processos
+	// de envio de msg1 e msg2 serem assíncronos
+	// imprime sincronizado justamente pq cada
+	// send e receive blockam
 
 	messages1 := make(chan string)
 	messages2 := make(chan string)
 
 	go func() {
 		messages1 <- "ping"
+	}()
+
+	go func() {
+		time.Sleep(3 * time.Second)
 		messages2 <- "deehoo"
 	}()
 
