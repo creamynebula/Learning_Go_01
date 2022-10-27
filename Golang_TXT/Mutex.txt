@@ -1,6 +1,10 @@
 https://yourbasic.org/golang/mutex-explained/
 https://golangdocs.com/mutex-in-golang
 
+// Mutex é pra qdo pode rolar um data-race,
+// múltiplas goroutines forem escrever dados
+// em local compartilhado. Com as travas, se
+// garante não escrever ao mesmo tempo.
 
 import "sync"
 
