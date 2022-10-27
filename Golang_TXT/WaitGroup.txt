@@ -1,4 +1,5 @@
 // um WaitGroup espera por uma coleção de goroutines terminar
+
 var wg sync.Waitgroup
 // essa vai esperar por 1000 operacoes
 wg.Add(1000)  // counter interno == 1000
