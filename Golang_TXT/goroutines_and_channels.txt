@@ -1,4 +1,6 @@
-package concurrency
+https://golangdocs.com/goroutines-in-golang
+
+
 
 type WebsiteChecker func(string) bool
 

@@ -1,3 +1,7 @@
+https://yourbasic.org/golang/mutex-explained/
+https://golangdocs.com/mutex-in-golang
+
+
 import "sync"
 
 type Counter struct {
