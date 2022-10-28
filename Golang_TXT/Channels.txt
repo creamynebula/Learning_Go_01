@@ -1,1 +1,48 @@
 https://golangdocs.com/channels-in-golang
+https://go.dev/doc/effective_go#concurrency
+
+
+
+c := make(chan int)  // Allocate a channel.
+// Start the sort in a goroutine; when it completes, signal on the channel.
+go func() {
+    list.Sort()
+    c <- 1  // Send a signal; value does not matter.
+}()
+doSomethingForAWhile()
+<-c   // Wait for sort to finish; discard sent value. Pro channel ficar vazio dnv.
+
+
+
+
+/* A buffered channel can be used like a semaphore, for instance to limit throughput. In this example, incoming requests are passed to handle, which sends a value into the channel, processes the request, and then receives a value from the channel to ready the “semaphore” for the next consumer. The capacity of the channel buffer limits the number of simultaneous calls to process. */
+
+MaxOutstanding := 5
+var sem = make(chan int, MaxOutstanding)
+
+func handle(r *Request) {
+    // capacidade == 5, se tiver 5 requests rodando blocka,
+    // até pelo menos um liberar, nao inicia um sexto.
+    sem <- 1    // Marca que +1 entrou na filha
+    process(r)  // May take a long time.
+    <-sem       // Done, tira da fila.
+}
+
+
+
+
+MaxOutstanding := 5
+var sem = make(chan int, MaxOutstanding)
+
+func Serve(queue chan *Request) {
+    for req := range queue {  // pra cada request na fila
+        sem <- 1  // marca que um request ta sendo processado
+        go func(req *Request) {  // manda goroutine processar
+            process(req)  // processa; pode demorar.
+            <-sem  // processou
+        }(req)
+    }
+}
+
+
+

@@ -1,38 +1,51 @@
 https://yourbasic.org/golang/mutex-explained/
 https://golangdocs.com/mutex-in-golang
 
-// Mutex é pra qdo pode rolar um data-race,
+// Mutex é pra qdo pode rolar um data-race:
 // múltiplas goroutines forem escrever dados
 // em local compartilhado. Com as travas, se
 // garante não escrever ao mesmo tempo.
+// Mutex é como se fosse uma sala com chave:
+// vc declara um Mutex m, uma goroutine numa funcao,
+// e pega a chave e tranca com m.Lock().
+// Aí, se outra goroutine chegar enqto vc trabalha, 
+// nao tem como ela entrar ali pra escrever dados
+// até vc destrancar e devolver a chave com m.Unlock().
 
 // Workings of a mutex: Acquire lock, modify data, release lock.
 
 
 
 func f(v *int, wg *sync.WaitGroup, m *sync.Mutex) {
-    // acquire lock
+    // tranca e entra na sala
     m.Lock()
-    // do operation
+    // faz operação
     *v++
-    // release lock
+    // destranca e sai da sala
     m.Unlock()
+    // informar o wg que a goroutine terminou a tarefa dela
     wg.Done()
 }
  
 func main() {
- 
+    // waitgroup pro programa esperar todas as goroutines terminarem
     var wg sync.WaitGroup
-    // declare mutex
+    // mutex pra nao rolar data-race no int que vamos mexer.
+    // por default o mutex é a porta destrancada
     var m sync.Mutex
     var v int = 0
  
     for i := 0; i < 1000; i++ {
+        // informar que vamos lançar uma goroutine,
+        // que deve ser esperada.
         wg.Add(1)
+        // lançar goroutine
         go f(&v, &wg, &m)
     }
- 
+    
+    // esperar todas as goroutines do waitgroup terminarem
     wg.Wait()
+    // aí sim imprimir
     fmt.Println("Finished", v)
 }
 
