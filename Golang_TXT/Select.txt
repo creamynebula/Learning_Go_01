@@ -1,1 +1,28 @@
 https://golangdocs.com/select-statement-in-golang
+
+
+
+
+func Server(store Store) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx := r.Context()
+
+		data := make(chan string, 1)
+
+		go func() {
+			// data passa a ter uma string no channel, qdo Fetch() terminar
+			data <- store.Fetch()
+		}()
+
+		select {
+		// qdo o channel tiver preenchido com a string
+		case d := <-data:
+			// escreve ela no request
+			fmt.Fprint(w, d)
+		// qdo receber o sinal de que o contexto terminou
+		case <-ctx.Done():
+			// cancela
+			store.Cancel()
+		}
+	}
+}
