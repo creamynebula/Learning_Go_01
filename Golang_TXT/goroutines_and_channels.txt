@@ -1,5 +1,5 @@
 https://golangdocs.com/goroutines-in-golang
-
+https://golangdocs.com/multiple-goroutines-in-golang
 
 
 type WebsiteChecker func(string) bool

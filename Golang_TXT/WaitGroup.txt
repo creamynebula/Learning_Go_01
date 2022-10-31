@@ -1,3 +1,5 @@
+https://golangdocs.com/waitgroups-in-golang
+
 // um WaitGroup espera por uma coleção de goroutines terminar
 
 var wg sync.Waitgroup

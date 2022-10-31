@@ -1,3 +1,5 @@
+https://go.dev/blog/context
+
 // A Context carries a deadline, cancellation signal, and request-scoped values
 // across API boundaries. Its methods are safe for simultaneous use by multiple
 // goroutines.

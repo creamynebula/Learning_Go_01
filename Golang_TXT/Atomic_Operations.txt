@@ -1,0 +1,1 @@
+https://golangdocs.com/atomic-operations-in-golang-atomic-package
