@@ -1,6 +1,8 @@
-"go mod init nomeDoProjetoCreio" //endereço da repo e nao o nome actually, creio
+//endereço da repo e nao o nome actually, creio
+"go mod init nomeDoProjetoCreio"
+"go mod tidy"
 
-- daí tu cria um arquivo.go e escreve o código
+// daí tu cria um arquivo.go e escreve o código
 
 package main
 import "fmt"
@@ -10,12 +12,12 @@ func main() {
 
 "go run ."
 
-- aí se tu importar um package externo, tem q fazer "go mod tidy"
-- dps pode "go run ."
+// aí se tu importar um package externo, tem q fazer "go mod tidy"
+// dps pode "go run ."
 
-- arquivos de teste tem que ser no formato "nomeafuncao_test.go". contém "import "testing"
-- funcoes de teste recebem "t *testing.T" de argumento, e o nome começa com Test.
-- "go test" ou "go test -cover"
+// arquivos de teste tem que ser no formato "nomeafuncao_test.go". contém "import "testing"
+// funcoes de teste recebem "t *testing.T" de argumento, e o nome começa com Test.
+// "go test" ou "go test -cover"
 
 func TestFuncao {
 	got := Funcao()

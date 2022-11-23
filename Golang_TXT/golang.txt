@@ -1,6 +1,25 @@
+https://gophercises.com/
 https://go.dev/doc/effective_go.html
 https://go.dev/blog/all
 https://gobyexample.com/
+golinuxcloud
+
+https://www.youtube.com/channel/UCT5d7jUni66Oii3jNRPPOfg/videos -- paulo recomendou tb
+
+https://github.com/camopy/sitemap-generator -- bom pra concurrency
+
+https://www.youtube.com/playlist?list=PLCKpcjBB_VlBsxJ9IseNxFllf-UFEXOdg
+https://quii.gitbook.io/learn-go-with-tests/
+
+
+Learn Go by building 11 projects (8h) - https://www.youtube.com/watch?v=jFfo23yIWac
+
+Go and AWS (1h45) - https://www.youtube.com/watch?v=zHcef4eHOc8
+
+Learn Go (6h40) - https://www.youtube.com/watch?v=YS4e4q9oBaU
+
+
+https://www.amazon.co.uk/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440
 
 
 Public functions começam nome com uppercase, private functions com lowercase
