@@ -1,16 +1,9 @@
-//endereço da repo e nao o nome actually, creio
-"go mod init nomeDoProjetoCreio"
-"go mod tidy"
+go mod init nomeDoProjetoCreio
+go mod tidy
 
-// daí tu cria um arquivo.go e escreve o código
+go run .
 
-package main
-import "fmt"
-func main() {
-	fmt.Println("Olaaaa, enfermeira!")
-}
-
-"go run ."
+go get golang.orx/x/net/html
 
 // aí se tu importar um package externo, tem q fazer "go mod tidy"
 // dps pode "go run ."
